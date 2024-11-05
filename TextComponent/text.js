@@ -46,18 +46,16 @@ class TextDisplay extends HTMLElement {
             const alignment = alignmentSelect.value;
             const color = colorValueInput.value || colorPicker.value;
 
-            // Récupérer les valeurs d'ombre
             const shadowColor = shadowColorValueInput.value || shadowColorPicker.value;
             const offsetX = shadowOffsetX.value;
             const offsetY = shadowOffsetY.value;
             const blur = shadowBlur.value;
 
-            output.textContent = input.value || ''; // Mettre à jour le texte affiché
+            output.textContent = input.value || ''; 
             output.style.fontSize = `${fontSize}px`;
-            output.style.color = color; // Appliquer la couleur
+            output.style.color = color; 
             output.style.textShadow = `${offsetX}px ${offsetY}px ${blur}px ${shadowColor}`;
 
-            // Appliquer l'orientation
             switch (orientation) {
                 case 'horizontal':
                     output.style.transform = 'none';
@@ -79,19 +77,16 @@ class TextDisplay extends HTMLElement {
                     break;
             }
 
-            // Appliquer l'alignement
             if (orientation === 'horizontal') {
                 output.style.textAlign = alignment;
             } else {
                 output.style.textAlign = 'center';
             }
 
-            // Appliquer l'animation
             const animationClass = animationSelect.value !== 'none' ? `animation-${animationSelect.value}` : '';
-            output.className = animationClass; // Met à jour la classe pour l'animation
+            output.className = animationClass; 
         };
 
-        // Ajoutez les écouteurs d'événements pour les mises à jour
         animationSelect.addEventListener('change', applyStyles);
         fontSizeRange.addEventListener('input', () => {
             fontSizeValue.textContent = `${fontSizeRange.value}px`;
@@ -122,7 +117,7 @@ class TextDisplay extends HTMLElement {
         shadowOffsetY.addEventListener('input', applyStyles);
         shadowBlur.addEventListener('input', applyStyles);
 
-        applyStyles(); // Appliquer les styles par défaut
+        applyStyles(); 
     }
 }
 

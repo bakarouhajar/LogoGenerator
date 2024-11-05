@@ -22,15 +22,15 @@ input[type="range"] {
 .output {
     margin-top: 10px;
     color: #333;
-    height: 100px; /* Hauteur fixe */
+    height: 100px;
     display: flex; 
-    justify-content: center; /* Centrer horizontalement par défaut */
-    align-items: center; /* Centrer verticalement */
+    justify-content: center; 
+    align-items: center; 
     background-color: #e0e0e0; 
-    overflow: hidden; /* Cache le texte qui dépasse */
-    width: 100%; /* Permet d'occuper toute la largeur */
-    writing-mode: horizontal-tb; /* Orientation par défaut */
-    text-align: center; /* Alignement par défaut */
+    overflow: hidden; 
+    width: 100%; 
+    writing-mode: horizontal-tb; 
+    text-align: center; 
 }
 
 .textColorInput {

@@ -23,25 +23,22 @@ class SubTextDisplay extends HTMLElement {
         const fontSizeValue = this.shadowRoot.querySelector('#fontSizeValue');
         const colorPicker = this.shadowRoot.querySelector('#textColorPicker');
         const colorValueInput = this.shadowRoot.querySelector('#textColorValue');
-        const output = document.getElementById('displaySubText'); // Assurez-vous que cet ID correspond
+        const output = document.getElementById('displaySubText');
 
-        // Vérification des éléments
         if (!input || !fontSizeRange || !fontSizeValue || !colorPicker || !colorValueInput || !output) {
             console.error("Un ou plusieurs éléments n'ont pas pu être trouvés !");
             return;
         }
 
-        // Fonction pour appliquer les styles
         const applyStyles = () => {
             const fontSize = fontSizeRange.value;
             const color = colorValueInput.value || colorPicker.value;
 
-            output.textContent = input.value || ''; // Mettre à jour le sous-texte affiché
+            output.textContent = input.value || ''; 
             output.style.fontSize = `${fontSize}px`;
-            output.style.color = color; // Appliquer la couleur
+            output.style.color = color; 
         };
 
-        // Écouteurs d'événements
         fontSizeRange.addEventListener('input', () => {
             fontSizeValue.textContent = `${fontSizeRange.value}px`;
             applyStyles();
@@ -56,7 +53,6 @@ class SubTextDisplay extends HTMLElement {
         });
         input.addEventListener('input', applyStyles);
 
-        // Initialiser les styles
         applyStyles();
     }
 }

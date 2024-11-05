@@ -27,7 +27,6 @@
             </div>
         </div>
 
-        <!-- Cadre unique pour la prévisualisation -->
         <div class="right">
             <div id="logoPreview" class="output">
                 <div id="displayText" class="preview-text">Exemple de texte principal</div>
@@ -36,7 +35,6 @@
             </div>
             <button id="downloadLogo" class="download-button">Télécharger le logo</button>
             <button id="generateCode" class="generate-button">Générer le code du logo</button>
-            <!-- Conteneur pour afficher le code -->
             <pre id="logoCode" class="logo-code-output"></pre>
         </div>
     </div>
@@ -55,7 +53,6 @@
         const generateCodeButton = document.getElementById('generateCode');
         const logoCodeOutput = document.getElementById('logoCode');
 
-        // Gestion de l'événement de téléchargement du logo
         downloadButton.addEventListener('click', () => {
             html2canvas(logoPreview, { useCORS: true }).then(canvas => {
                 const link = document.createElement('a');
@@ -67,11 +64,10 @@
             });
         });
 
-        // Gestion de l'image uploadée et des dimensions personnalisées
         document.querySelector('image-upload').addEventListener('image-uploaded', (event) => {
             const imageSrc = event.detail.imageSrc;
             displayImage.src = imageSrc;
-            displayImage.style.display = 'block'; // Affiche l'image
+            displayImage.style.display = 'block';
         });
 
         document.querySelector('image-upload').addEventListener('image-dimensions-updated', (event) => {
@@ -89,21 +85,18 @@
             } else if (position === 'below') {
                 displayImage.style.bottom = '0';
             } else {
-                displayImage.style.position = 'static'; // Pour centrer
+                displayImage.style.position = 'static'; 
             }
         });
 
-        // Gestion de l'événement de génération du code du logo
         generateCodeButton.addEventListener('click', () => {
             console.log("Génération du code du logo en cours...");
             html2canvas(logoPreview, { useCORS: true }).then(canvas => {
-                // Obtenez le code source de l'image (Base64)
                 const imageDataUrl = canvas.toDataURL("image/png");
 
-                // Affichez le code source dans le bloc <pre>
                 logoCodeOutput.textContent = imageDataUrl;
-                logoCodeOutput.classList.add('visible');  // Rend le code visible après la génération
-                console.log("Code du logo généré:", imageDataUrl); // Vérifiez la sortie dans la console
+                logoCodeOutput.classList.add('visible');  
+                console.log("Code du logo généré:", imageDataUrl); 
             }).catch(error => {
                 console.error("Erreur lors de la génération du code du logo :", error);
             });

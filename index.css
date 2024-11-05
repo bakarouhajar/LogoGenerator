@@ -16,11 +16,10 @@
     align-items: center;
 }
 
-/* Styles pour le logoPreview pour inclure tous les éléments */
 #logoPreview {
     display: inline-block;
     padding: 10px;
-    background-color: white; /* Fond blanc pour le logo */
+    background-color: white; 
     border: 1px solid #ccc;
     width: fit-content;
     height: fit-content;
@@ -41,29 +40,26 @@
 
 #displayImage {
     margin-top: 10px;
-    max-width: 100%; /* Limite la taille pour éviter de déborder */
+    max-width: 100%; 
 }
 
-/* Amélioration visuelle pour la sortie du code */
-/* Styles pour la zone d'affichage du code du logo */
-/* Zone d'affichage du code */
+
 .logo-code-output {
     background-color: #f4f4f4;
     padding: 10px;
     border-radius: 5px;
     font-family: monospace;
-    white-space: pre-wrap;   /* Permet au texte de se répartir sur plusieurs lignes si nécessaire */
-    word-wrap: break-word;   /* Permet au texte de se casser pour éviter qu'il ne dépasse */
+    white-space: pre-wrap;   
+    word-wrap: break-word;   
     margin-top: 10px;
-    width: 100%;             /* Largeur 100% de son conteneur parent */
-    max-width: 600px;        /* Limite la largeur à 600px (ajustez selon vos besoins) */
-    overflow-x: auto;        /* Ajoute une barre de défilement horizontale si nécessaire */
-    overflow-y: hidden;      /* Cache la barre de défilement verticale */
+    width: 100%;             
+    max-width: 600px;        
+    overflow-x: auto;        
+    overflow-y: hidden;      
     display: block;
 }
 
 
-/* Ajout de la classe 'visible' pour rendre le code visible avec une animation */
 .logo-code-output.visible {
     opacity: 1;
 }

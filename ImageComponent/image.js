@@ -34,7 +34,6 @@ class ImageUpload extends HTMLElement {
             reader.onload = (e) => {
                 const imageSrc = e.target.result;
 
-                // Déclenche l'événement image-uploaded
                 const imageEvent = new CustomEvent('image-uploaded', {
                     detail: { imageSrc }
                 });
