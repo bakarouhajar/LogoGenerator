@@ -1,0 +1,85 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.label-input {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+input[type="range"] {
+    margin-left: 10px;
+}
+
+#fontSizeValue {
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.output {
+    margin-top: 10px;
+    color: #333;
+    height: 100px; /* Hauteur fixe */
+    display: flex; 
+    justify-content: center; /* Centrer horizontalement par défaut */
+    align-items: center; /* Centrer verticalement */
+    background-color: #e0e0e0; 
+    overflow: hidden; /* Cache le texte qui dépasse */
+    width: 100%; /* Permet d'occuper toute la largeur */
+    writing-mode: horizontal-tb; /* Orientation par défaut */
+    text-align: center; /* Alignement par défaut */
+}
+
+.textColorInput {
+    margin-left: 10px;
+}
+.label-input {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+input[type="number"], input[type="color"] {
+    margin-left: 10px;
+}
+@keyframes flip-horizontal {
+    0%, 100% {
+        transform: rotateY(0deg);
+    }
+    50% {
+        transform: rotateY(180deg);
+    }
+}
+
+@keyframes bounce {
+    0%, 100%, 20%, 50%, 80% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-30px);
+    }
+    60% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+    20%, 40%, 60%, 80% { transform: translateX(10px); }
+}
+
+.animation-flip-horizontal {
+    animation: flip-horizontal 2s infinite;
+}
+
+.animation-bounce {
+    animation: bounce 2s infinite;
+}
+
+.animation-shake {
+    animation: shake 0.5s infinite;
+}

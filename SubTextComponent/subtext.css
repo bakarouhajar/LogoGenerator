@@ -1,0 +1,12 @@
+.subtext-controls {
+    display: flex;
+    flex-direction: column;
+}
+
+.font-size-control, .color-control {
+    margin-top: 10px; /* Espace entre les contrôles */
+}
+
+input[type="text"], input[type="color"], input[type="range"] {
+    margin-top: 5px; /* Espace au-dessus des champs d'entrée */
+}

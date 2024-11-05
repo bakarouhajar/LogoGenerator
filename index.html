@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo Generator</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="SubTextComponent/subtext.css">
+    <link rel="stylesheet" href="ImageComponent/image.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <div class="text-container">
+                <h2>Texte Principal</h2>
+                <text-display></text-display>
+            </div>
+            <div class="subtext-container">
+                <h2>Sous-texte</h2>
+                <sub-text-display></sub-text-display>
+            </div>
+            <div class="image-container">
+                <h2>Image</h2>
+                <image-upload></image-upload>
+            </div>
+        </div>
+
+        <!-- Cadre unique pour la prévisualisation -->
+        <div class="right">
+            <div id="logoPreview" class="output">
+                <div id="displayText" class="preview-text">Exemple de texte principal</div>
+                <div id="displaySubText" class="preview-subtext">Exemple de sous-texte</div>
+                <img id="displayImage" src="" alt="Aperçu de l'image" style="display: none;">
+            </div>
+            <button id="downloadLogo" class="download-button">Télécharger le logo</button>
+            <button id="generateCode" class="generate-button">Générer le code du logo</button>
+            <!-- Conteneur pour afficher le code -->
+            <pre id="logoCode" class="logo-code-output"></pre>
+        </div>
+    </div>
+
+    <script src="TextComponent/text.js"></script>
+    <script src="SubTextComponent/subtext.js"></script>
+    <script src="ImageComponent/image.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <script>
+        const displayImage = document.getElementById('displayImage');
+        const displayText = document.getElementById('displayText');
+        const displaySubText = document.getElementById('displaySubText');
+        const logoPreview = document.getElementById('logoPreview');
+        const downloadButton = document.getElementById('downloadLogo');
+        const generateCodeButton = document.getElementById('generateCode');
+        const logoCodeOutput = document.getElementById('logoCode');
+
+        // Gestion de l'événement de téléchargement du logo
+        downloadButton.addEventListener('click', () => {
+            html2canvas(logoPreview, { useCORS: true }).then(canvas => {
+                const link = document.createElement('a');
+                link.href = canvas.toDataURL("image/png");
+                link.download = 'logo.png';
+                link.click();
+            }).catch(error => {
+                console.error("Erreur de téléchargement du logo :", error);
+            });
+        });
+
+        // Gestion de l'image uploadée et des dimensions personnalisées
+        document.querySelector('image-upload').addEventListener('image-uploaded', (event) => {
+            const imageSrc = event.detail.imageSrc;
+            displayImage.src = imageSrc;
+            displayImage.style.display = 'block'; // Affiche l'image
+        });
+
+        document.querySelector('image-upload').addEventListener('image-dimensions-updated', (event) => {
+            const width = event.detail.width;
+            const height = event.detail.height;
+            if (width) displayImage.style.width = width + 'px';
+            if (height) displayImage.style.height = height + 'px';
+        });
+
+        document.querySelector('image-upload').addEventListener('image-position-updated', (event) => {
+            const position = event.detail.position;
+            displayImage.style.position = 'absolute';
+            if (position === 'above') {
+                displayImage.style.top = '0';
+            } else if (position === 'below') {
+                displayImage.style.bottom = '0';
+            } else {
+                displayImage.style.position = 'static'; // Pour centrer
+            }
+        });
+
+        // Gestion de l'événement de génération du code du logo
+        generateCodeButton.addEventListener('click', () => {
+            console.log("Génération du code du logo en cours...");
+            html2canvas(logoPreview, { useCORS: true }).then(canvas => {
+                // Obtenez le code source de l'image (Base64)
+                const imageDataUrl = canvas.toDataURL("image/png");
+
+                // Affichez le code source dans le bloc <pre>
+                logoCodeOutput.textContent = imageDataUrl;
+                logoCodeOutput.classList.add('visible');  // Rend le code visible après la génération
+                console.log("Code du logo généré:", imageDataUrl); // Vérifiez la sortie dans la console
+            }).catch(error => {
+                console.error("Erreur lors de la génération du code du logo :", error);
+            });
+        });
+    </script>
+</body>
+
+</html>
