@@ -1,6 +1,6 @@
 # Logo Generator - Créateur de Logo Personnalisé
 
-Créez des logos uniques et personnalisés en quelques clics avec notre générateur de logo facile à utiliser. Ce **Logo Generator** permet aux utilisateurs de concevoir des logos en combinant du texte principal, un sous-texte et des images.
+Ce **Logo Generator** permet aux utilisateurs de concevoir des logos en combinant du texte principal, un sous-texte et des images.
 
 ## Points clés
 
